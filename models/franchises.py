@@ -10,3 +10,4 @@ class Franchise(Base):
     cidade = Column(String, nullable=False)
     sigla = Column(String, nullable=False)
     conferencia = Column(String, nullable=False)
+    logo = Column(String, nullable=False)

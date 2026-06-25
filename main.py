@@ -1,5 +1,6 @@
 from flask import Flask
 from flasgger import Swagger
+from flask_cors import CORS
 
 from routes.players_route import player_bp
 from routes.franchise_route import franchise_bp
@@ -8,6 +9,12 @@ from routes.lottery_route import lottery_bp
 
 
 app = Flask(__name__)
+
+CORS(
+    app,
+    resources={r"/*": {"origins": "*"}},
+    supports_credentials=False
+)
 
 app.register_blueprint(player_bp)
 app.register_blueprint(franchise_bp)

@@ -25,21 +25,18 @@ def draft():
 
     db = SessionLocal()
 
-    # Busca a ordem salva pela lottery
     lottery_results = (
         db.query(LotteryResult)
         .order_by(LotteryResult.pick)
         .all()
     )
 
-    # Impede executar draft sem lottery
     if not lottery_results:
         db.close()
         return {
             "erro": "Execute a lottery antes do draft"
         }, 400
 
-    # Monta a lista de franquias na ordem sorteada
     franchises = []
 
     for lottery in lottery_results:
@@ -54,14 +51,12 @@ def draft():
 
         franchises.append(franchise)
 
-    # Busca os jogadores ordenados pelo ranking
     players = (
         db.query(Player)
         .order_by(Player.ranking)
         .all()
     )
 
-    # Executa o draft
     resultado = realizar_draft(
         franchises,
         players

@@ -1,3 +1,5 @@
+import random
+
 from flask import Blueprint, request
 from database import SessionLocal
 from models.players import Player
@@ -131,7 +133,9 @@ def create_player():
         idade=data["idade"],
         posicao=data["posicao"],
         universidade=data["universidade"],
-        altura=data["altura"]
+        altura=data["altura"],
+        nacionalidade=data["nacionalidade"],
+        ranking=random.randint(1, 100)
     )
 
     db.add(player)

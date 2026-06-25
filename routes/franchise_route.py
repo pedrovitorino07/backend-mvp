@@ -29,7 +29,8 @@ def get_franchises():
             "nome": franchise.nome,
             "cidade": franchise.cidade,
             "sigla": franchise.sigla,
-            "conferencia": franchise.conferencia
+            "conferencia": franchise.conferencia,
+            "logo": franchise.logo
         })
 
     db.close()
